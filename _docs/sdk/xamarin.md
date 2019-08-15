@@ -26,7 +26,13 @@ You need to provide your **SDK Key** which can be found in [Smartlook Dashboard]
 
 ## API Reference
 
-Applications can interact with the SDK using public SDK methods.
+Applications can interact with the SDK using public SDK methods. To get access to Smartlook API, declare
+
+```cs
+using Smartlook;
+```
+
+in your C# files.
 
 ### Run Smartlook
 
@@ -35,7 +41,7 @@ You need to provide your **SDK Key** which can be found in [Smartlook Dashboard]
 
 To access Smartlook API, use static methods exposed by `Smartlook.Analytics` class. These methods are the same for multi-platform and Android or iOS specific code. Direct usage of native binding methods that might be also exposed in `Smartlook` namespace is not recommended and supported.
 
-The most straigthforward way to run Smartlook is by calling the following method at the very begin of the app life-cycle (e.g., iOS: AppDelegates’s FinishedLaunching, Android: MainActivity’s OnCreate):
+The most straigthforward way to run Smartlook is by calling the following method at the very begin of the app life-cycle (e.g., iOS: `AppDelegates`’s `FinishedLaunching`, Android: `MainActivity`’s `OnCreate`):
 
 ```cs
 Smartlook.Analytics.SetupAndStart("your-app-sdk-key");
@@ -49,7 +55,7 @@ Even if you do not want starting the recording right away, setup the Smartlook a
 Smartlook.Analytics.Setup("your-app-sdk-key");
 ```
 
-You can start and stop the recording any time by 
+You can start and stop the recording and checking its status any time by 
 
 ```cs
 Smartlook.Analytics.StartRecording();
@@ -85,11 +91,11 @@ void SetUserIdentifier(string identifier, Dictionary<string, string> userProperi
 Additional custom properties can be added or removed to each recording session by these methods:
 
 ```cs
-void SetSessionProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults)
+void SetSessionProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults);
 
-void RemoveSessionProperty(string name)
+void RemoveSessionProperty(string name);
 
-static public void ClearSessionProperties()        
+static public void ClearSessionProperties();
 ```
 
 If you do want _locking_ a session property value to protect it against accidental further changes, set its options to `Immutable`. Immutable property value cannot be changes once it is set (it can be removes and set again, though).
@@ -102,11 +108,11 @@ SDK contains list of blacklisted views. These views won't be recorded (there wil
 
 To add an instance of View/UIView to the blacklist, use this method
 ```cs
-void RegisterBlacklistedObject(object @object)
+void RegisterBlacklistedObject(object @object);
 ```
 to remove it
 ```cs
-void UnregisterBlacklistedObject(object @object)
+void UnregisterBlacklistedObject(object @object);
 ```
 
 #### Whitelisted views
@@ -125,11 +131,11 @@ void UnregisterWhitelistObject(object @object)
 In the case you don't want SDK to record video at all, but still want to get analytics events, use fullscreen sensitive mode:
 
 ```cs
-void BeginFullscreenSensitiveMode()
+void BeginFullscreenSensitiveMode();
 
-void EndFullscreenSensitiveMode()
+void EndFullscreenSensitiveMode();
 
-bool BeginFullscreenSensitiveMode
+bool BeginFullscreenSensitiveMode;
 ```
 
 ### Analytics
@@ -168,11 +174,11 @@ Properties set in the `StartTimedCustomEvent` will be merged with properties set
 Global event properties are sent with every event. To manage global event properties, use the following set of methods:
 
 ```cs
-void SetGlobalEventProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults)
+void SetGlobalEventProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults);
 
-void RemoveGlobalEventProperty(string name)
+void RemoveGlobalEventProperty(string name);
 
-void ClearGlobalEventProperties()
+void ClearGlobalEventProperties();
 ```
 
 `PropertyOptions` are the same as in the case of Session Properties.
