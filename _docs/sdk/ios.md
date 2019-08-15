@@ -290,7 +290,7 @@ You can also add your own custom events.
 
 #### Custom events
 
-Custom events are identified by an name, and can also have additional optional properties. The additional properties can be used in **funnels** and any other **filtering**.
+Custom events are identified by a name, and can also have additional optional properties. The additional properties can be used in **funnels** and any other **filtering**.
 
 ```swift
 Smartlook.trackCustomEvent(name: String, props: [String : String]?)
