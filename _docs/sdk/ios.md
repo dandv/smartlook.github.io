@@ -23,7 +23,7 @@ When debugging your app with Smartlook, you will encounter a **Main Thread Check
 
 ## WiFi / mobile connection / offline
 
-Currently we are uploading sessions **only of WiFi** connection. If application is on mobile connection or offline we are storing sessions locally and will upload them as soon as application has WiFi conection.
+Currently we are uploading sessions **only on WiFi** connection. If application is on mobile connection or offline we are storing sessions locally and will upload them as soon as application has WiFi connection.
 
 ## Installation
 
@@ -67,7 +67,7 @@ Applications can interact with the SDK using public SDK methods.
 You need to provide your **SDK Key** which can be found in [Smartlook Dashboard](https://www.smartlook.com/app/dashboard/settings/projects){:target="_blank"}.
 {: .alert .alert-warning }
 
-The most straigthforward way to run Smartlook is to enter the following two lines of code into your app `AppDelegate` `didFinishLaunchingWithOptions` method:
+The most straightforward way to run Smartlook is to enter the following two lines of code into your app `AppDelegate` `didFinishLaunchingWithOptions` method:
 
 ```swift
 Smartlook.setup(key: "your-app-sdk-key")
@@ -78,11 +78,11 @@ Smartlook.startRecording()
 [Smartlook startRecording];
 ```
 
-That is all. This initializes Smartlook and starts recording events and screen recording.
+That is all. This initialises Smartlook and starts recording events and screen recording.
 
 ### Run Smartlook with options
 
-The way Smartlook run can be customized by adding optional  `options` parameters to `setup` method, e.g.,
+The way Smartlook run can be customised by adding optional  `options` parameters to `setup` method, e.g.,
 
 ```swift
 Smartlook.setup(key: "your-app-sdk-key", options:[.enableCrashytics: true, .framerate: 2])
@@ -221,7 +221,7 @@ BOOL isSensitiveMode = [Smartlook isFullscreenSensitiveModeActive];
 
 #### Blacklisted overlay color
 
-The default colour of the sensitive data overlay is black. You can customized this color by calling:
+The default colour of the sensitive data overlay is black. You can customised this color by calling:
 
 ```swift
 Smartlook.setBlacklistedItem(color: UIColor) // changes default overlay colour
@@ -267,7 +267,7 @@ Smartlook.clearSessionProperties() // removes all session properties
 [Smartlook clearSessionProperties];  // removes all session properties
 ``` 
 
-If you do want _locking_ a session property value to protect it against accidental further changes. Immutable property value cannot be changes once it is set (it can be removes and set again, though).
+If you do want _locking_ a session property value to protect it against accidental further changes. Immutable property value cannot be changed once it is set (it can be removed and set again, though).
 
 ```swift
 Smartlook.setSessionProperty(value: "immutable-value", forName: "my-property", options: .immutable)
@@ -290,7 +290,7 @@ You can also add your own custom events.
 
 #### Custom events
 
-Custom events are identified by a name, and can also have additional optional properties. The additional properties can be used in **funnels** and any other **filtering**.
+Custom events are identified by a name, and can also have additional optional properties. The additional properties can be used in **funnels** and by any other **filtering**.
 
 ```swift
 Smartlook.trackCustomEvent(name: String, props: [String : String]?)
