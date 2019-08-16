@@ -83,7 +83,7 @@ Higher framerate do not necessarily lead to bigger video data, but more frequent
 
 You can specify your app's user identifier together with optional setting of other custom parameters by 
 ```cs
-void SetUserIdentifier(string identifier, Dictionary<string, string> userProperies = null)
+static void SetUserIdentifier(string identifier, Dictionary<string, string> userProperies = null);
 ```
 
 ### Session properties [iOS only]
@@ -91,11 +91,11 @@ void SetUserIdentifier(string identifier, Dictionary<string, string> userProperi
 Additional custom properties can be added or removed to each recording session by these methods:
 
 ```cs
-void SetSessionProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults);
+static void SetSessionProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults);
 
-void RemoveSessionProperty(string name);
+static void RemoveSessionProperty(string name);
 
-static public void ClearSessionProperties();
+static void ClearSessionProperties();
 ```
 
 If you do want _locking_ a session property value to protect it against accidental further changes, set its options to `Immutable`. Immutable property value cannot be changed once it is set (it can be removed and set again, though).
@@ -108,19 +108,19 @@ In order to protect potentially sensitive or personal data of your users, SDK co
 
 To add/remove an instance of View/UIView to the blacklist, use these methods
 ```cs
-void RegisterBlacklistedObject(object @object);
-void UnregisterBlacklistedObject(object @object);
+static void RegisterBlacklistedObject(object @object);
+static void UnregisterBlacklistedObject(object @object);
 ```
 
 #### Whitelisted views
 Views of some classes are included in the blacklist by default (Android: `EditText` and `WebView`, iOS: `UITextView`, `UITextField`, `UIWebView` and `WKWebView`).
 To whitelist an instance of blacklisted class View/UIView, use
 ```cs
-void RegisterWhitelistedObject(object @object)
+static void RegisterWhitelistedObject(object @object);
 ```
 and to return a view back to its default blacklisted state
 ```cs
-void UnregisterWhitelistedObject(object @object)
+static void UnregisterWhitelistedObject(object @object);
 ```
 
 #### Sensitive mode
@@ -128,11 +128,11 @@ void UnregisterWhitelistedObject(object @object)
 In the case you don't want SDK to record video at all, but still want to get analytics events, use fullscreen sensitive mode:
 
 ```cs
-void BeginFullscreenSensitiveMode();
+static void BeginFullscreenSensitiveMode();
 
-void EndFullscreenSensitiveMode();
+static void EndFullscreenSensitiveMode();
 
-bool IsFullscreenSensitiveModeActive;
+static bool IsFullscreenSensitiveModeActive;
 ```
 
 ### Analytics
@@ -150,16 +150,16 @@ You can also add your own custom events.
 
 Custom events are identified by a name, and can also have optional additional properties. These properties can be used in **funnels** and by any other **filtering**.
 
-```swift
-void TrackCustomEvent(string name, Dictionary<string, string> eventProperties = null)
+```cs
+static void TrackCustomEvent(string name, Dictionary<string, string> eventProperties = null);
 ```
 
 #### Timed event
 
 In the case you want to measure the duration of any time-sensitive or long-running actions in the app, you can first call
 
-```swift
-void StartTimedCustomEvent(string name, Dictionary<string, string> eventProperties = null)
+```cs
+static void StartTimedCustomEvent(string name, Dictionary<string, string> eventProperties = null);
 ```
 
 This will not send out any event, but once the `TrackCustomEvent(...)` with the corresponding event gets called it will have extra **duration** property with the time interval between the `Start...` and `Track...` calls.
@@ -171,11 +171,11 @@ Properties set in the `StartTimedCustomEvent` will be merged with properties set
 Global event properties are sent with every event. To manage global event properties, use the following set of methods:
 
 ```cs
-void SetGlobalEventProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults);
+static void SetGlobalEventProperty(string name, string value, PropertyOptions options = PropertyOptions.Defaults);
 
-void RemoveGlobalEventProperty(string name);
+static void RemoveGlobalEventProperty(string name);
 
-void ClearGlobalEventProperties();
+static void ClearGlobalEventProperties();
 ```
 
 Global event properties can be set `Immutable` the same way session properties. Immutable property value cannot be changes once it is set (it can be removes and set again, though).
@@ -185,7 +185,7 @@ Global event properties can be set `Immutable` the same way session properties. 
 You can obtain URL leading to the Dashboard player for the current Smartlook session by reading this property:
 
 ```cs
-Smartlook.Analytics.dashboardSessionURL
+static Uri Smartlook.Analytics.dashboardSessionURL;
 ```
 
 This URL can be access by everyone with the access rights to the dashboard.
