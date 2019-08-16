@@ -75,7 +75,7 @@ Smartlook.Analytics.SetupAndStart("your-app-sdk-key", new Analytics.SetupOptions
 ```
 #### Framerate Option
 
-By our experience, the default 1 fps framerate is quite sufficient for capturing user behaviour for analytics purposes. Increase the framerate if you need *smoother* recordings.
+From our experience, the default 1~2fps framerate is quite sufficient for capturing user behaviour for analytics purposes. Increase the framerate if you need *smoother* recordings. Plese note that custom framerate must not be lesser than 2fps.
 
 Higher framerate do not necessarily lead to bigger video data, but more frequent screen capture increases the device CPU/GPU load and energy consumption. Compromise strategy could be e.g., enabling higher framerate during beta-testing, and decrease it to the default value in production builds.
 
