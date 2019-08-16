@@ -14,6 +14,11 @@ description: "This SDK offers several options to developers and/or companies."
 
 For more information on how to report issues please check our [Smartlook SDK Support section](https://smartlook.github.io/docs/sdk/support/#how-to-submit-an-issue).
 
+## WiFi / mobile connection / offline
+
+Currently we are uploading sessions **only on WiFi** connection. If application is on mobile connection or offline we are storing sessions locally and will upload them as soon as application has WiFi connection.
+*Note: we are working on a change so you could enable mobile uploads on per project basis in the dashboard in near future.*
+
 ## Installation
 
 TBD
