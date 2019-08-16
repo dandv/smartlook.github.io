@@ -41,7 +41,7 @@ You need to provide your **SDK Key** which can be found in [Smartlook Dashboard]
 
 To access Smartlook API, use static methods exposed by `Smartlook.Analytics` class. The methods are the same for multi-platform, Android or iOS projects.
 
-The most straightforward way to run Smartlook is by calling the following method at the very begin of the app life-cycle (e.g., iOS: `AppDelegates`’s `FinishedLaunching`, Android: `MainActivity`’s `OnCreate`):
+The most straightforward way to run Smartlook is by calling the following method at the very begin of the app life-cycle (e.g., iOS: `AppDelegates`’s `FinishedLaunching`, Android: `Application` class `OnCreate`):
 
 ```cs
 Smartlook.Analytics.SetupAndStart("your-app-sdk-key");
