@@ -194,7 +194,7 @@ static void RemoveGlobalEventProperty(string name);
 static void ClearGlobalEventProperties();
 ```
 
-Global event properties can be set `Immutable` the same way session properties. Immutable property value cannot be changes once it is set (it can be removes and set again, though).
+Global event properties can be set `Immutable` the same way session properties. Immutable property value cannot be changed once it is set (it can be removed and set again, though).
 
 ### Shareable session URL
 
