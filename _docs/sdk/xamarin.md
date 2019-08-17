@@ -159,7 +159,7 @@ Custom events are identified by a name, and can also have optional additional pr
 static void TrackCustomEvent(string name, Dictionary<string, string> eventProperties = null);
 ```
 
-#### Timed event
+#### Timed events
 
 In the case you want to measure the duration of any time-sensitive or long-running actions in the app, you can first call
 
@@ -170,6 +170,17 @@ static void StartTimedCustomEvent(string name, Dictionary<string, string> eventP
 This will not send out any event, but once the `TrackCustomEvent(...)` with the corresponding event gets called it will have extra **duration** property with the time interval between the `Start...` and `Track...` calls.
 
 Properties set in the `StartTimedCustomEvent` will be merged with properties set in `TrackCustomEvent`. Properties from the  `TrackCustomEvent` will have higher priority and will override conflicting properties from `StartTimedCustomEvent` call.
+
+#### Navigation Event
+
+Standard navigation in your app is detected automatically. If, however, you use some non-standard navigation techniques that Smartlook cannot detect, or when you need more fine-grained records of the user way through your app, you can track navigation events directly:
+
+```cs
+static void TrackNavigationEvent(string identifier, NavigationEventType type = NavigationEventType.Enter);
+```
+
+The `NavigationEventType` enum has two possible self-explanatory values: `Enter` and `Exit`. It is not mandatory calling an `Exit` for each `Enter`, however, if you do it, the `Exit` event records the time interfal from the last `Enter` call with the matching name.
+
 
 #### Global event properties
 
